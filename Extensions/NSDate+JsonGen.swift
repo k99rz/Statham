@@ -13,7 +13,7 @@ extension NSDate
   private struct JsonGenDateFormatter {
     static let withTimeZone : NSDateFormatter = {
       let formatter = NSDateFormatter()
-      formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+      formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
       formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
 
       return formatter
@@ -24,7 +24,7 @@ extension NSDate
     guard let str = json as? String,
       let result = JsonGenDateFormatter.withTimeZone.dateFromString(str)
       else {
-        throw JsonDecodeError.WrongType(rawValue: json, expectedType: "ISO 8601 formatted NSDate")
+        throw JsonDecodeError.WrongType(rawValue: json, expectedType: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z' formatted NSDate")
     }
 
     return result
