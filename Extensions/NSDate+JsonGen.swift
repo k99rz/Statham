@@ -13,7 +13,7 @@ extension NSDate
   private struct JsonGenDateFormatter {
     static let withTimeZone : NSDateFormatter = {
       let formatter = NSDateFormatter()
-      formatter.timeZone = NSDateFormatter(name: "UTC")
+      formatter.timeZone = NSTimeZone(name: "UTC")
       formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
       formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
 
